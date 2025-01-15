@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fruit
+  - Enemy
+  - Basket
+  - BottomBorder
   layers:
   - Default
   - TransparentFX
@@ -38,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 142266025
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
