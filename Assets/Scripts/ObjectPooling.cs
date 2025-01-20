@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -14,6 +15,15 @@ public class LevelPrefabs : ScriptableObject
 {
     public GameObject[] fruitPrefabs;
     public GameObject[] enemyPrefabs;
+    public int targetScore; // set score target for this level
+    public float levelDuration; //set the duration for the level
+    public string levelName;
+    
+
+    // Add these fields for spawn intervals (New CODE!)
+    public float fruitSpawnInterval;
+    public float enemySpawnInterval;
+
 }
 
 //Object pool manager
@@ -25,7 +35,7 @@ public class ObjectPooling : MonoBehaviour
         //public string objectTag;
         public int initialSize;
         public int maxSize;
-        public float spawnInterval;        
+        //public float spawnInterval;        
     }
 
     [Header("Pool Settings")]
@@ -41,7 +51,7 @@ public class ObjectPooling : MonoBehaviour
     private float nextFruitSpawnTime;
     private float nextEnemySpawnTime;
 
-    private float spawnWidth = 8f;
+    private float spawnWidth = 7.5f;
     private float spawnHeight = 6f;
     
 
@@ -51,14 +61,24 @@ public class ObjectPooling : MonoBehaviour
         fruitPool = new Dictionary<string, Queue<GameObject>>();
         enemyPool = new Dictionary<string, Queue<GameObject>>();
 
-        InitializePools();
+        //start spawning with level-specific intervals (NEW CODE!!)
+        SetSpawnIntervals();
+
+        //InitializePools(); TEMP DELETION
 
         //start spawning
-        nextFruitSpawnTime = Time.time + fruitPoolSettings.spawnInterval;
-        nextEnemySpawnTime = Time.time + enemyPoolSettings.spawnInterval;
+        //nextFruitSpawnTime = Time.time + fruitPoolSettings.spawnInterval;
+        //nextEnemySpawnTime = Time.time + enemyPoolSettings.spawnInterval;
+    }
+    //NEW CODE!!
+    private void SetSpawnIntervals()
+    {
+        // Use the spawn intervals from the current level
+        nextFruitSpawnTime = Time.time + levelPrefabs.fruitSpawnInterval;
+        nextEnemySpawnTime = Time.time + levelPrefabs.enemySpawnInterval;
     }
 
-    private void InitializePools()
+    public void InitializePools()
     {
         Debug.Log("Initializing object pools...");
         //initialize fruit pool
@@ -190,12 +210,24 @@ public class ObjectPooling : MonoBehaviour
 
     private void Update()
     {
+        //check if the game is paused and do not spawn
+        if(Time.timeScale == 0f)
+        {
+            return;
+        }
+        StartSpawning();
+    }
+
+    public void StartSpawning()
+    {
+
         // Handle fruit spawning
         if (Time.time >= nextFruitSpawnTime)
         {
             Debug.Log("Spawning random fruit...");
             SpawnRandomFruit();
-            nextFruitSpawnTime = Time.time + fruitPoolSettings.spawnInterval;
+            nextFruitSpawnTime = Time.time + levelPrefabs.fruitSpawnInterval; // Use level-specific interval
+            //nextFruitSpawnTime = Time.time + fruitPoolSettings.spawnInterval;
         }
 
         // Handle enemy spawning
@@ -203,8 +235,12 @@ public class ObjectPooling : MonoBehaviour
         {
             Debug.Log("Spawning random enemy...");
             SpawnRandomEnemy();
-            nextEnemySpawnTime = Time.time + enemyPoolSettings.spawnInterval;
+            nextEnemySpawnTime = Time.time + levelPrefabs.enemySpawnInterval; // Use level-specific interval
+            //nextEnemySpawnTime = Time.time + enemyPoolSettings.spawnInterval;
+
         }
+
+        //Debug.Log("SPAWNED ?");
     }
 
     private void SpawnRandomFruit()
@@ -249,11 +285,22 @@ public class ObjectPooling : MonoBehaviour
     // Call this when changing levels
     public void LoadLevelPrefabs(LevelPrefabs newLevelPrefabs)
     {
+        if (newLevelPrefabs == null)
+        {
+            Debug.LogError("Cannot load level prefabs: newLevelPrefabs is null.");
+            return;
+        }
         Debug.Log("Loading new level prefabs...");
 
         // Clear existing pools
         foreach (var pool in fruitPool.Values)
         {
+            if (pool == null)
+            {
+                Debug.LogError("A pool is null");
+                continue; // Skip to the next pool
+            }
+
             while (pool.Count > 0)
             {
                 GameObject obj = pool.Dequeue();
@@ -277,7 +324,40 @@ public class ObjectPooling : MonoBehaviour
         levelPrefabs = newLevelPrefabs;
         InitializePools();
 
+        // Set spawn intervals based on the new level's settings
+        SetSpawnIntervals();
+
         Debug.Log("New level prefabs loaded.");
+    }
+
+    //call this to reset the game
+    public void ResetPools()
+    {
+        // Clear existing fruit pools
+        foreach (var pool in fruitPool.Values)
+        {
+            while (pool.Count > 0)
+            {
+                GameObject obj = pool.Dequeue();
+                if (obj != null) Destroy(obj);
+            }
+        }
+        fruitPool.Clear();
+
+        // Clear existing enemy pools
+        foreach (var pool in enemyPool.Values)
+        {
+            while (pool.Count > 0)
+            {
+                GameObject obj = pool.Dequeue();
+                if (obj != null) Destroy(obj);
+            }
+        }
+        enemyPool.Clear();
+
+        // Reinitialize the pools with the current level prefabs
+        InitializePools();
+        Debug.Log("Pools have been reset.");
     }
 
 }
