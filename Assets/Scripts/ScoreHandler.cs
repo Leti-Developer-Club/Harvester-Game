@@ -16,6 +16,7 @@ public class ScoreHandler : MonoBehaviour
     public float currentTime; // total time in seconds
 
     public LevelManager levelManager;
+    public GameManager gameManager;
 
 
     //when basket collides with an object
@@ -100,6 +101,7 @@ public class ScoreHandler : MonoBehaviour
     {
         currentTime = newTime;
         UpdateTimerDisplay();
+        gameManager.ResetGameOverState();
         Debug.Log("Timer reset");
     }
 

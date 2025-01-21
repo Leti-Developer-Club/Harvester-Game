@@ -29,8 +29,7 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        //start with the current level
-        //LoadLevel(currentLevelIndex); //Giving an error revisit
+        
     }
 
 

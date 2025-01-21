@@ -23,4 +23,4 @@ MonoBehaviour:
   levelDuration: 25
   levelName: Hard
   fruitSpawnInterval: 1.5
-  enemySpawnInterval: 0.8
+  enemySpawnInterval: 0.9

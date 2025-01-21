@@ -2779,6 +2779,7 @@ MonoBehaviour:
   scoreTarget: 0
   currentTime: 10
   levelManager: {fileID: 1250191188}
+  gameManager: {fileID: 794572550}
 --- !u!4 &831208733
 Transform:
   m_ObjectHideFlags: 0

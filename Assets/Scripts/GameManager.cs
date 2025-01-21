@@ -230,6 +230,13 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {        
         InitializedGame();
+        
+    }
+
+    public void ResetGameOverState()
+    {
+        //this to fix level timer not working on level replay
+        isGameOver = false; // Reset game over state
     }
 
     public void QuitGame()

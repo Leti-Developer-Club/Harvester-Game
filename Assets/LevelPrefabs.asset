@@ -19,5 +19,5 @@ MonoBehaviour:
   targetScore: 80
   levelDuration: 60
   levelName: Easy
-  fruitSpawnInterval: 1
+  fruitSpawnInterval: 2
   enemySpawnInterval: 1.5
