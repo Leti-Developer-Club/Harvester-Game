@@ -5062,11 +5062,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitPoolSettings:
-    initialSize: 10
-    maxSize: 20
+    initialSize: 20
+    maxSize: 50
   enemyPoolSettings:
-    initialSize: 5
-    maxSize: 10
+    initialSize: 10
+    maxSize: 35
   levelPrefabs: {fileID: 11400000, guid: 5462267b355075a4985a94bb805cf380, type: 2}
 --- !u!1 &1551838063
 GameObject:

@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ea735d8b21544ba43a1daf899bbb2003, type: 3}
   m_Name: LevelPrefabs 2
-  m_EditorClassIdentifier: Assembly-CSharp::LevelPrefabs
+  m_EditorClassIdentifier: 
   fruitPrefabs:
   - {fileID: 9147179906086000577, guid: 996bdd69aca17a04db397217327e2b99, type: 3}
-  - {fileID: 9147179906086000577, guid: 4431c62b87bcd3d498b78df64bde781f, type: 3}
+  - {fileID: 9147179906086000577, guid: 30373f8d6b81aa74f870cf4dfe6836b9, type: 3}
   enemyPrefabs:
   - {fileID: 1414315083168653635, guid: ee73b8b9c1ef29f45816097d5e60eb40, type: 3}
   - {fileID: 1414315083168653635, guid: eb9d12deaac660f46b5fb1655e16248c, type: 3}
   - {fileID: 1414315083168653635, guid: 053ce23eb42977b4388fb4d480ac94fb, type: 3}
-  targetScore: 180
-  levelDuration: 40
+  targetScore: 150
+  levelDuration: 25
   levelName: Hard
   fruitSpawnInterval: 1.5
-  enemySpawnInterval: 1
+  enemySpawnInterval: 0.8

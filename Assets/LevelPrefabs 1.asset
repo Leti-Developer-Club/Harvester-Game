@@ -9,17 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ea735d8b21544ba43a1daf899bbb2003, type: 3}
   m_Name: LevelPrefabs 1
-  m_EditorClassIdentifier: Assembly-CSharp::LevelPrefabs
+  m_EditorClassIdentifier: 
   fruitPrefabs:
   - {fileID: 9147179906086000577, guid: 1625ba2ae943e324b85bceb7d9fb74b7, type: 3}
-  - {fileID: 9147179906086000577, guid: 30373f8d6b81aa74f870cf4dfe6836b9, type: 3}
+  - {fileID: 9147179906086000577, guid: 4431c62b87bcd3d498b78df64bde781f, type: 3}
   enemyPrefabs:
-  - {fileID: 1414315083168653635, guid: 3b5f9fd8d1516ff4e92c2efcf088b6fc, type: 3}
   - {fileID: 1414315083168653635, guid: 8d7fec14a7f15ad4d82b138f2d39b3bf, type: 3}
-  targetScore: 150
-  levelDuration: 90
+  - {fileID: 1414315083168653635, guid: 053ce23eb42977b4388fb4d480ac94fb, type: 3}
+  - {fileID: 1414315083168653635, guid: eb9d12deaac660f46b5fb1655e16248c, type: 3}
+  targetScore: 120
+  levelDuration: 40
   levelName: Medium
-  fruitSpawnInterval: 2
-  enemySpawnInterval: 1.2
+  fruitSpawnInterval: 3
+  enemySpawnInterval: 0.5

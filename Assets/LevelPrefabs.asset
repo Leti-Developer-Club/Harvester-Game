@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ea735d8b21544ba43a1daf899bbb2003, type: 3}
   m_Name: LevelPrefabs
-  m_EditorClassIdentifier: Assembly-CSharp::LevelPrefabs
+  m_EditorClassIdentifier: 
   fruitPrefabs:
   - {fileID: 2832325512756443652, guid: 06241f5dcd4942d43a33d31d578acbda, type: 3}
   enemyPrefabs:
   - {fileID: 1414315083168653635, guid: abaee91afe378f3449bbeaff0820bf99, type: 3}
-  targetScore: 50
-  levelDuration: 120
+  targetScore: 80
+  levelDuration: 60
   levelName: Easy
   fruitSpawnInterval: 1
   enemySpawnInterval: 1.5
