@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 1414315083168653635, guid: 053ce23eb42977b4388fb4d480ac94fb, type: 3}
   - {fileID: 1414315083168653635, guid: eb9d12deaac660f46b5fb1655e16248c, type: 3}
   targetScore: 120
-  levelDuration: 40
+  levelDuration: 50
   levelName: Medium
-  fruitSpawnInterval: 3
+  fruitSpawnInterval: 2
   enemySpawnInterval: 0.5
